@@ -34,9 +34,6 @@ public class Client {
                             .send(responseHandler)
                             .getParsedOutput();
                     handler.printCurrentWeatherData(weatherInformation);
-
-                    serverSocket.shutdownInput();
-                    serverSocket.close();
                 } catch (InvalidRequestBodyException e) {
                     System.out.println("We couldn't proceed with the given Date. Please check your date again and make sure it's in the correct format.");
                 } catch (IOException e) {
