@@ -27,6 +27,7 @@ public class TemperatureHandler implements Runnable {
     TemperatureHandler(Socket clientSocket) {
         log.info("New client connected! Further Information:");
         log.info("Client IP: {}", clientSocket.getInetAddress().getHostAddress());
+        log.info("Client Port: {}", clientSocket.getPort());
         this.clientSocket = clientSocket;
     }
 
