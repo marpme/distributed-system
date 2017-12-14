@@ -26,8 +26,7 @@ public class TemperatureHandler implements Runnable {
 
     TemperatureHandler(Socket clientSocket) {
         log.info("New client connected! Further Information:");
-        log.info("Client IP: {}", clientSocket.getInetAddress().getHostAddress());
-        log.info("Client Port: {}", clientSocket.getPort());
+        log.info("Client: {}:{}", clientSocket.getInetAddress().getHostAddress(), clientSocket.getPort());
         this.clientSocket = clientSocket;
     }
 
@@ -48,7 +47,7 @@ public class TemperatureHandler implements Runnable {
      */
     @Override
     public void run() {
-        log.info("Thread #{} is serving the weather data.", Thread.currentThread().getId());
+        log.info("Thread #{} with PID #{} is serving the weather data.", Thread.currentThread().getId(), ProcessHandle.current().pid());
         try (
                 InputStreamReader inputStreamReader = new InputStreamReader(clientSocket.getInputStream());
                 BufferedReader clientReader = new BufferedReader(inputStreamReader);
